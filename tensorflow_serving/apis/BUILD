@@ -93,7 +93,7 @@ serving_proto_library(
 
 serving_proto_library_py(
     name = "sentence_proto_py_pb2",
-    srcs = ["parsey.proto"],
+    srcs = ["sentence.proto"],
     proto_library = "sentence_proto",
     deps = [],
 )
