@@ -83,13 +83,30 @@ py_library(
 )
 
 serving_proto_library(
+    name = "sentence_proto",
+    srcs = ["sentence.proto"],
+    cc_api_version = 2,
+    go_api_version = 2,
+    java_api_version = 2,
+    deps = [],
+)
+
+serving_proto_library_py(
+    name = "sentence_proto_py_pb2",
+    srcs = ["parsey.proto"],
+    proto_library = "sentence_proto",
+    deps = [],
+)
+
+
+serving_proto_library(
     name = "parsey_proto",
     srcs = ["parsey.proto"],
     cc_api_version = 2,
     go_api_version = 2,
     java_api_version = 2,
     deps = [
-        "@syntaxnet//syntaxnet:sentence_proto",
+        ":sentence_proto",
         "@org_tensorflow//tensorflow/core:protos_all_cc",
     ],
 )
@@ -99,7 +116,7 @@ serving_proto_library_py(
     srcs = ["parsey.proto"],
     proto_library = "parsey_proto",
     deps = [
-        "@syntaxnet//syntaxnet:sentence_py_pb2",
+        ":sentence_py_pb2",
         "@org_tensorflow//tensorflow/core:protos_all_py",
     ],
 )
