@@ -116,3 +116,11 @@ serving_proto_library(
         ":parsey_proto",
     ],
 )
+
+serving_proto_library_py(
+    name = "parsey_service_proto_py_pb2",
+    srcs = ["parsey_service.proto"],
+    proto_library = "parsey_service_proto",
+    deps = [
+        ":parsey_proto",
+    ],
