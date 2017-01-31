@@ -9,5 +9,5 @@ message ParseyRequest {
 };
 
 message ParseyResponse {
-  repeated syntaxnet.Sentence result = 1;
+  repeated Sentence result = 1;
 };
