@@ -136,19 +136,24 @@ void RunServer(int port, std::unique_ptr<SessionBundle> bundle) {
 }  // namespace
 
 int main(int argc, char** argv) {
-  tensorflow::int32 port = 0;
-  const bool parse_result =
-      tensorflow::ParseFlags(&argc, argv, {tensorflow::Flag("port", &port)});
-  if (!parse_result) {
-    LOG(FATAL) << "Error parsing command line flags.";
+  tensorflow::int32 port = 8500;
+  tensorflow::string model_base_path;
+  
+  std::vector<tensorflow::Flag> flag_list = {
+      tensorflow::Flag("port", &port, "port to listen on"),
+      tensorflow::Flag("model_base_path", &model_base_path,
+                       "path to export (required)")};
+  string usage = tensorflow::Flags::Usage(argv[0], flag_list);
+  const bool parse_result = tensorflow::Flags::Parse(&argc, argv, flag_list);
+  if (!parse_result || model_base_path.empty()) {
+    std::cout << usage;
+    return -1;
   }
-
-  if (argc != 2) {
-    LOG(FATAL) << "Usage: parsey_server --port=9000 /path/to/export";
-  }
-  const string bundle_path(argv[1]);
 
   tensorflow::port::InitMain(argv[0], &argc, &argv);
+  if (argc != 1) {
+    std::cout << "unknown argument: " << argv[1] << "\n" << usage;
+  }
 
   SessionBundleConfig session_bundle_config;
 
@@ -173,7 +178,7 @@ int main(int argc, char** argv) {
       SessionBundleFactory::Create(session_bundle_config, &bundle_factory));
 
   std::unique_ptr<SessionBundle> bundle(new SessionBundle);
-  TF_QCHECK_OK(bundle_factory->CreateSessionBundle(bundle_path, &bundle));
+  TF_QCHECK_OK(bundle_factory->CreateSessionBundle(model_base_path, &bundle));
 
   RunServer(port, std::move(bundle));
 
