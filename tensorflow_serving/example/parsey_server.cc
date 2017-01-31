@@ -13,6 +13,7 @@
 #include "grpc/grpc.h"
 #include "tensorflow_serving/apis/parsey_service.grpc.pb.h"
 #include "tensorflow_serving/apis/parsey_service.pb.h"
+#include "tensorflow_serving/apis/sentence.pb.h"
 #include "tensorflow/core/framework/tensor.h"
 #include "tensorflow/core/framework/tensor_shape.h"
 #include "tensorflow/core/framework/tensor_types.h"
@@ -25,14 +26,13 @@
 #include "tensorflow/core/public/session.h"
 #include "tensorflow/core/public/session_options.h"
 #include "tensorflow/core/util/command_line_flags.h"
-#include "tensorflow_serving/example/parsey_server.grpc.pb.h"
-#include "tensorflow_serving/example/parsey_server.pb.h"
+#include "tensorflow_serving/apis/parsey_service.grpc.pb.h"
+#include "tensorflow_serving/apis/parsey_service.pb.h"
 #include "tensorflow_serving/servables/tensorflow/session_bundle_config.pb.h"
 #include "tensorflow_serving/servables/tensorflow/session_bundle_factory.h"
 #include "tensorflow/contrib/session_bundle/manifest.pb.h"
 #include "tensorflow/contrib/session_bundle/session_bundle.h"
 #include "tensorflow/contrib/session_bundle/signature.h"
-#include "tf_models/syntaxnet/sentence.pb.h"
 
 
 using grpc::InsecureServerCredentials;
