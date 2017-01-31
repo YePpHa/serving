@@ -11,6 +11,11 @@ def tf_serving_workspace():
     name = "inception_model",
     path = "tf_models/inception",
   )
+  
+  native.local_repository(
+    name = "syntaxnet",
+    path = "tf_models/syntaxnet",
+  )
 
   tf_workspace(path_prefix = "", tf_repo_name = "org_tensorflow")
 

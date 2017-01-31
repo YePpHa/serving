@@ -128,6 +128,7 @@ cc_binary(
         "@protobuf//:cc_wkt_protos",
         "@org_tensorflow//tensorflow/core:lib",
         "@org_tensorflow//tensorflow/core/platform/cloud:gcs_file_system",
+        "@syntaxnet//syntaxnet:parser_ops_cc",
         "//tensorflow_serving/apis:prediction_service_proto",
         "//tensorflow_serving/config:model_server_config_proto",
         "//tensorflow_serving/core:eager_load_policy",
