@@ -124,3 +124,4 @@ serving_proto_library_py(
     deps = [
         ":parsey_proto",
     ],
+)
