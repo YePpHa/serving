@@ -81,3 +81,38 @@ py_library(
     srcs = ["prediction_service_pb2.py"],
     deps = [":predict_proto_py_pb2"],
 )
+
+serving_proto_library(
+    name = "parsey_proto",
+    srcs = ["parsey.proto"],
+    cc_api_version = 2,
+    go_api_version = 2,
+    java_api_version = 2,
+    deps = [
+        "@syntaxnet//syntaxnet:sentence_proto",
+        "@org_tensorflow//tensorflow/core:protos_all_cc",
+    ],
+)
+
+serving_proto_library_py(
+    name = "parsey_proto_py_pb2",
+    srcs = ["parsey.proto"],
+    proto_library = "parsey_proto",
+    deps = [
+        "@syntaxnet//syntaxnet:sentence_py_pb2",
+        "@org_tensorflow//tensorflow/core:protos_all_py",
+    ],
+)
+
+serving_proto_library(
+    name = "parsey_service_proto",
+    srcs = ["parsey_service.proto"],
+    has_services = 1,
+    cc_api_version = 2,
+    cc_grpc_version = 1,
+    go_api_version = 2,
+    java_api_version = 2,
+    deps = [
+        ":parsey_proto",
+    ],
+)

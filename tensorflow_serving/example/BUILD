@@ -75,3 +75,28 @@ py_binary(
         "@org_tensorflow//tensorflow:tensorflow_py",
     ],
 )
+
+cc_binary(
+    name = "parsey_server",
+    srcs = [
+        "parsey_server.cc",
+    ],
+    linkopts = ["-lm"],
+    deps = [
+        "@grpc//:grpc++",
+        "@org_tensorflow//tensorflow/core:core_cpu",
+        "@org_tensorflow//tensorflow/core:framework",
+        "@org_tensorflow//tensorflow/core:lib",
+        "@org_tensorflow//tensorflow/core:protos_all_cc",
+        "@org_tensorflow//tensorflow/core:tensorflow",
+        "@syntaxnet//syntaxnet:parser_ops_cc",
+        "@syntaxnet//syntaxnet:sentence_proto",
+        "//tensorflow_serving/apis:parsey_proto_py_pb2",
+        "//tensorflow_serving/apis:parsey_service_proto_py_pb2",
+        "//tensorflow_serving/servables/tensorflow:session_bundle_config_proto",
+        "//tensorflow_serving/servables/tensorflow:session_bundle_factory",
+        "@org_tensorflow//tensorflow/contrib/session_bundle",
+        "@org_tensorflow//tensorflow/contrib/session_bundle:manifest_proto_cc",
+        "@org_tensorflow//tensorflow/contrib/session_bundle:signature",
+    ],
+)

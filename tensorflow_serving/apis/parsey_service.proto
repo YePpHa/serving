@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package tensorflow.serving;
+option cc_enable_arenas = true;
+
+import "tensorflow_serving/apis/parsey.proto";
+
+// open source marker; do not remove
+// ParseyService provides access to machine-learned models loaded by
+// model_servers.
+service ParseyService {
+  // Predict -- provides access to loaded TensorFlow model.
+  rpc Parse(ParseyRequest) returns (ParseyResponse);
+}

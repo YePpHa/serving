@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package tensorflow.serving;
+
+import "tf_models/syntaxnet/sentence.proto";
+
+message ParseyRequest {
+  repeated string text = 1;
+};
+
+message ParseyResponse {
+  repeated syntaxnet.Sentence result = 1;
+};
