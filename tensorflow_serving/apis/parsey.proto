@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package tensorflow.serving;
 
-import "sentence.proto";
+import "tensorflow_serving/apis/sentence.proto";
 
 message ParseyRequest {
   repeated string text = 1;
