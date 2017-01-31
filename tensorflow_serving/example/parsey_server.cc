@@ -41,13 +41,19 @@ using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
 using grpc::StatusCode;
+using tensorflow::serving::ParseyRequest;
+using tensorflow::serving::ParseyResponse;
+using tensorflow::serving::ParseyService;
+using tensorflow::serving::BatchingParameters;
+using tensorflow::serving::SessionBundle;
+using tensorflow::serving::SessionBundleConfig;
+using tensorflow::serving::SessionBundleFactory;
 using tensorflow::string;
 using tensorflow::Tensor;
 using tensorflow::TensorShape;
 using syntaxnet::Sentence;
 
-namespace tensorflow {
-namespace serving {
+namespace {
 
 // Creates a gRPC Status from a TensorFlow Status.
 Status ToGRPCStatus(const tensorflow::Status& status) {
@@ -126,8 +132,7 @@ void RunServer(int port, std::unique_ptr<SessionBundle> bundle) {
   server->Wait();
 }
 
-}  // namespace serving
-}  // namespace tensorflow
+}  // namespace
 
 int main(int argc, char** argv) {
   tensorflow::int32 port = 0;
