@@ -46,13 +46,13 @@ using tensorflow::serving::ParseyRequest;
 using tensorflow::serving::ParseyResponse;
 using tensorflow::serving::ParseyService;
 using tensorflow::serving::RegressionSignature;
+using tensorflow::serving::Sentence;
 using tensorflow::serving::SessionBundle;
 using tensorflow::serving::SessionBundleConfig;
 using tensorflow::serving::SessionBundleFactory;
 using tensorflow::string;
 using tensorflow::Tensor;
 using tensorflow::TensorShape;
-using syntaxnet::Sentence;
 
 namespace {
 
