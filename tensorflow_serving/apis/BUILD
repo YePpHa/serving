@@ -116,7 +116,7 @@ serving_proto_library_py(
     srcs = ["parsey.proto"],
     proto_library = "parsey_proto",
     deps = [
-        ":sentence_py_pb2",
+        ":sentence_proto_py_pb2",
         "@org_tensorflow//tensorflow/core:protos_all_py",
     ],
 )
