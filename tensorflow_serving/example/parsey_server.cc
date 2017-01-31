@@ -25,8 +25,8 @@
 #include "tensorflow/core/public/session.h"
 #include "tensorflow/core/public/session_options.h"
 #include "tensorflow/core/util/command_line_flags.h"
-#include "tensorflow_serving/example/parsey_api.grpc.pb.h"
-#include "tensorflow_serving/example/parsey_api.pb.h"
+#include "tensorflow_serving/example/parsey_server.grpc.pb.h"
+#include "tensorflow_serving/example/parsey_server.pb.h"
 #include "tensorflow_serving/servables/tensorflow/session_bundle_config.pb.h"
 #include "tensorflow_serving/servables/tensorflow/session_bundle_factory.h"
 #include "tensorflow/contrib/session_bundle/manifest.pb.h"
@@ -138,7 +138,7 @@ int main(int argc, char** argv) {
   }
 
   if (argc != 2) {
-    LOG(FATAL) << "Usage: parsey_api --port=9000 /path/to/export";
+    LOG(FATAL) << "Usage: parsey_server --port=9000 /path/to/export";
   }
   const string bundle_path(argv[1]);
 
