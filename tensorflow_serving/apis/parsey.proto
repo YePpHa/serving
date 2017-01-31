@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package tensorflow.serving;
 
-import "tf_models/syntaxnet/sentence.proto";
+import "tf_models/syntaxnet/syntaxnet/sentence.proto";
 
 message ParseyRequest {
   repeated string text = 1;
